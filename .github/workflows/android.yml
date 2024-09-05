@@ -25,9 +25,6 @@ jobs:
       with:
         node-version: '20'
 
-    - name: Run Yarn Install
-      run: yarn install 
-
     - name: Install Node Modules
       run: yarn
 
@@ -38,9 +35,6 @@ jobs:
       run: |
           cd android
           chmod +x gradlew
-          
-    - name: Print React Native Config
-      run: npx react-native config   
 
     - name: Clean Android
       run: yarn cleanAndroid
@@ -55,5 +49,5 @@ jobs:
       uses: actions/upload-artifact@v3.2.1-node20
       with:
         name: "android_build"
-        path: ./android/app/build/outputs/apk/app-release.apk
+        path: ./android/app/build/outputs/apk/release/app-release.apk
         retention-days: 1
