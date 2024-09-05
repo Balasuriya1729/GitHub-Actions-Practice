@@ -38,15 +38,10 @@ jobs:
       run: |
           cd android
           chmod +x gradlew
-
-    - name: Clean Android
-      run: yarn cleanAndroid
             
     - name: Build with Gradle
       run: |
-            cd android
-            ./gradlew build
-            cd ..
+        ./gradlew -p android clean build
 
     - name: Upload a Build Artifact
       uses: actions/upload-artifact@v3.2.1-node20
