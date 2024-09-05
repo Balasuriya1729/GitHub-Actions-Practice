@@ -1,6 +1,30 @@
 name: Android CI
 
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+    inputs:
+      Environment:
+        description: 'Set the environment you need to take build'
+        required: true
+        default: 'prod'
+        type: choice
+        options:
+        - prod
+        - qeop
+        - core
+        - coreqe
+
+      Flavour:
+        description: 'What is the flavour?'
+        required: true
+        default: 'keyless'
+        type: choice
+        options:
+        - keyless
+        - progress
+        - kairos
+        - nhr
+
 
 jobs:
   build:
@@ -27,6 +51,11 @@ jobs:
 
     - name: Install Node Modules
       run: yarn
+
+    - name: Env setup
+      run: |
+        export PLATFORM='android' FLAVOUR=${{ inputs.Flavour }} ENV=${{ inputs.Environment }}
+        yarn setup
 
     - name: Fixable Eslint
       run: yarn lint

@@ -8,6 +8,7 @@
     "lint": "eslint . --fix",
     "start": "react-native start",
     "cleanAndroid": "cd android && ./gradlew clean && cd ..",
+    "setup": "bash pre-builder.sh",
     "test": "jest"
   },
   "dependencies": {
