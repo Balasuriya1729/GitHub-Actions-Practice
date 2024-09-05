@@ -38,7 +38,10 @@ jobs:
       run: |
           cd android
           chmod +x gradlew
-            
+
+    - name: Print React Native Config
+      run: npx react-native config        
+    
     - name: Build with Gradle
       run: |
         ./gradlew -p android clean build
