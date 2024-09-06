@@ -49,6 +49,10 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Configure npm for GitHub Packages
+      run: |
+        echo "//npm.pkg.github.com/:_authToken=${{ secrets.GH_TOKEN }}" > ~/.yarnrc
+
     - name: Install Node Modules
       run: yarn
 
